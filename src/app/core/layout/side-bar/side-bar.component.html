@@ -1,0 +1,20 @@
+<div id="side-bar">
+    <div class="lg-veiw">
+        <p-menu [model]="items"  styleClass="w-full md:w-15rem">
+            <ng-template pTemplate="start">
+                <span class="flex justify-start items-center ps-5  py-2">
+                    <img src="Icons/Logo.png" alt="">         
+                </span>
+            </ng-template>        
+          </p-menu>
+    </div>
+
+    <div class="md-veiw">
+        <p-button (onClick)="menu.toggle($event)" >
+        <span class="pi pi-align-justify"  pButtonLabel></span>
+        </p-button>
+        
+        <p-tieredMenu #menu [model]="items" [popup]="true" >
+        </p-tieredMenu>   
+    </div>
+</div>
