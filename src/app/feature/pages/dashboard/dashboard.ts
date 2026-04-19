@@ -5,10 +5,11 @@ import { Analytics } from '../../../shared/bussiness/analytics/analytics';
 import { Orders } from '../../../feature/services/Orders/orders';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { IOrderModel } from '../../models/order';
+import { Charts } from '../../../shared/bussiness/charts/charts';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [Table, RouterLink, Analytics],
+  imports: [Table, RouterLink, Analytics , Charts],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css',
 })

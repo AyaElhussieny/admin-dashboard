@@ -1,0 +1,25 @@
+<div class="h-full">
+  <div class="flex px-3 justify-between items-center">
+    <h1 class="text-lg font-bold mb-5">Visits</h1>
+    <ul class="flex justify-end items-center font-bold">
+      <li class="me-5">D</li>
+      <li class="me-5 text-blue-600">W</li>
+      <li class="me-5">M</li>
+      <li class="me-5">Y</li>
+    </ul>
+  </div>
+  <ngx-charts-bar-vertical
+    ngSkipHydration
+    [results]="data"
+    [scheme]="colorScheme"
+    [xAxis]="true"
+    [yAxis]="false"
+    [roundDomains]="true"
+    [gradient]="false"
+    [showDataLabel]="false"
+    [animations]="true"
+    [barPadding]="10"
+    [xAxisTickFormatting]="formatLabel"
+  >
+  </ngx-charts-bar-vertical>
+</div>

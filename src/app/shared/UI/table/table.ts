@@ -27,7 +27,7 @@ export class Table {
   orders = input<IOrderModel[]>();
   allOrders = input<number>();
   pagination = input<boolean>();
-  
+
   cols = [
     { field: 'name', header: 'Item Name' },
     { field: 'quantity', header: 'Qty' },

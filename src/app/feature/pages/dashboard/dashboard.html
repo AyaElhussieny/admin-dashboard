@@ -1,5 +1,7 @@
 <app-analytics />
 
+<app-charts />
+
 <div class="flex justify-between items-center mb-5 px-1">
   <p class="font-bold text-lg">Recent orders</p>
   <div class="flex justify-between items-center text-gray-400 gap-1">
@@ -12,4 +14,9 @@
     <div class="pi pi-arrow-right"></div>
   </div>
 </div>
-<app-table [allOrders]="allOrders()?.length" [orders]="allOrders()?.slice(0,3)" [isLoading]="isLoading()" [pagination]="false"/>
+<app-table
+  [allOrders]="allOrders()?.length"
+  [orders]="allOrders()?.slice(0, 3)"
+  [isLoading]="isLoading()"
+  [pagination]="false"
+/>
