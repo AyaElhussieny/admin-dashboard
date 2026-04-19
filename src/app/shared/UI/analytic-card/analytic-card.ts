@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'app-analytic-card',
@@ -6,4 +6,10 @@ import { Component } from '@angular/core';
   templateUrl: './analytic-card.html',
   styleUrl: './analytic-card.css',
 })
-export class AnalyticCard {}
+export class AnalyticCard {
+  img = input<string>();
+  style = input<string>();
+  title = input<string>();
+  discount = input<string>();
+  coast = input<string>();
+}
