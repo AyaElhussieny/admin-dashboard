@@ -12,4 +12,4 @@
     <div class="pi pi-arrow-right"></div>
   </div>
 </div>
-<app-table />
+<app-table [allOrders]="allOrders()?.length" [orders]="allOrders()?.slice(0,3)" [isLoading]="isLoading()" />

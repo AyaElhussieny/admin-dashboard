@@ -1,11 +1,9 @@
-import { Component, effect, inject, OnInit, signal, Signal } from '@angular/core';
+import { Component, computed, effect, inject, input, OnInit, signal, Signal } from '@angular/core';
 import { TableModule } from 'primeng/table';
 import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { RatingModule } from 'primeng/rating';
 import { TagModule } from 'primeng/tag';
-import { Orders } from '../../../feature/services/Orders/orders';
-import { toSignal } from '@angular/core/rxjs-interop';
 import { IOrderModel } from '../../../feature/models/order';
 import { CommonModule } from '@angular/common';
 import { SkeletonModule } from 'primeng/skeleton';
@@ -25,7 +23,6 @@ import { SkeletonModule } from 'primeng/skeleton';
   styleUrl: './table.css',
 })
 export class Table {
-
   cols = [
     { field: 'name', header: 'Item Name' },
     { field: 'quantity', header: 'Qty' },
@@ -33,12 +30,9 @@ export class Table {
     { field: 'amount', header: 'Amount' },
     { field: 'status', header: 'Status' },
   ];
-
-
-  isLoading = signal(true);
-  _orderService = inject(Orders);
-  allOrders = toSignal<IOrderModel[]>(this._orderService.getAllOrder());
-  orders = signal(this.allOrders()?.slice(0, 3));
+  isLoading = input<boolean>();
+  orders = input<IOrderModel[]>();
+  allOrders = input<number>();
 
   getSeverity(status: string): 'success' | 'secondary' | 'info' | 'warn' | 'danger' | 'contrast' {
     switch (status) {

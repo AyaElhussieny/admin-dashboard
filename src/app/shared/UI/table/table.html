@@ -1,4 +1,4 @@
-<p-table [value]="orders() || []" [tableStyle]="{ 'min-width': '60rem' }">
+<p-table [value]="orders() ?? []" [tableStyle]="{ 'min-width': '60rem' }" ngSkipHydration>
   <ng-template #header>
     <tr>
       <th>Item Name</th>
@@ -11,26 +11,52 @@
   </ng-template>
   <ng-template #body let-order>
     <tr>
-      <td class="flex justify-start items-center gap-2">
-        <div class="w-10 h-10 overflow-hidden flex justify-center items-center rounded-full">
-          <img [src]="order.image" width="5rem" [alt]="order.title" class="w-20 rounded-2xl" />
-        </div>
-        <p>{{ order.title }}</p>
-      </td>
-      <td>1</td>
-      <td>January 20, 2022</td>
+      @if (isLoading()) {
+        <p-skeleton width="100%" height="2rem" class="mb-2" />
+      } @else {
+        <td>
+          <div class="flex justify-start items-center gap-2">
+            <div class="w-10 h-10 overflow-hidden flex justify-center items-center rounded-full">
+              <img [src]="order.image" width="5rem" [alt]="order.title" class="w-20 rounded-2xl" />
+            </div>
+            <p>{{ order.title }}</p>
+          </div>
+        </td>
+      }
 
-      <td>{{ order.price | currency: 'USD' }}</td>
-      <td>{{ order.category }}</td>
+      @if (isLoading()) {
+        <p-skeleton width="100%" height="2rem" class="mb-2 mx-1" />
+      } @else {
+        <td>1</td>
+      }
+      @if (isLoading()) {
+        <p-skeleton width="100%" height="2rem" class="mb-2 mx-1" />
+      } @else {
+        <td>20/1/2022</td>
+      }
+      @if (isLoading()) {
+        <p-skeleton width="100%" height="2rem" class="mb-2 mx-1" />
+      } @else {
+        <td>{{ order.price | currency: 'USD' }}</td>
+      }
+      @if (isLoading()) {
+        <p-skeleton width="100%" height="2rem" class="mb-2 mx-1" />
+      } @else {
+        <td>{{ order.category }}</td>
+      }
       <!-- <td><p-rating [(ngModel)]="order.rating" [readonly]="true" [cancel]="false" /></td> -->
-      <td>
-        <p-tag [value]="'Pending'" [severity]="getSeverity('Pending')" />
-      </td>
+      @if (isLoading()) {
+        <p-skeleton width="100%" height="2rem" class="mb-2 mx-1" />
+      } @else {
+        <td>
+          <p-tag [value]="'Pending'" [severity]="getSeverity('Pending')" />
+        </td>
+      }
     </tr>
   </ng-template>
   <ng-template #footer>
     <tr>
-      <td colspan="6">In total there are {{ allOrders() ? allOrders()?.length : 0 }} Orders.</td>
+      <td colspan="6">In total there are {{ allOrders() }} Orders.</td>
     </tr>
   </ng-template>
 </p-table>
