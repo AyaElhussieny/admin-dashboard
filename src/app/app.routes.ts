@@ -6,7 +6,6 @@ export const routes: Routes = [
     path: '',
     loadComponent: () =>
       import('./core/layout/dashboard-layout/dashboard-layout').then((P) => P.DashboardLayout),
-    resolve: { data: ordersResolver },
     children: [
       {
         path: '',
@@ -17,6 +16,7 @@ export const routes: Routes = [
         path: 'Orders',
         loadComponent: () => import('./feature/pages/orders/orders').then((p) => p.OrdersComponent),
         title: 'Orders',
+        resolve: { data: ordersResolver },
       },
     ],
   },

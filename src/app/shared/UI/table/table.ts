@@ -23,6 +23,11 @@ import { SkeletonModule } from 'primeng/skeleton';
   styleUrl: './table.css',
 })
 export class Table {
+  isLoading = input<boolean>();
+  orders = input<IOrderModel[]>();
+  allOrders = input<number>();
+  pagination = input<boolean>();
+  
   cols = [
     { field: 'name', header: 'Item Name' },
     { field: 'quantity', header: 'Qty' },
@@ -30,9 +35,6 @@ export class Table {
     { field: 'amount', header: 'Amount' },
     { field: 'status', header: 'Status' },
   ];
-  isLoading = input<boolean>();
-  orders = input<IOrderModel[]>();
-  allOrders = input<number>();
 
   getSeverity(status: string): 'success' | 'secondary' | 'info' | 'warn' | 'danger' | 'contrast' {
     switch (status) {

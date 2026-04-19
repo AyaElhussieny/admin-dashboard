@@ -2,7 +2,10 @@
   display: none;
 }
 :host ::ng-deep .p-menu-item.p-focus .p-menu-item-content {
-    color: #0561fc !important;
+    /* color: #0561fc !important; */
+    color: white !important;
+    background-color: #9cbefa;
+
 }
 :host ::ng-deep .p-menu-item-link {
   margin-top: 0.5rem;

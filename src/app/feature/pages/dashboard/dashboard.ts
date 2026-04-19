@@ -1,10 +1,9 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { Table } from '../../../shared/UI/table/table';
 import { RouterLink } from '@angular/router';
 import { Analytics } from '../../../shared/bussiness/analytics/analytics';
 import { Orders } from '../../../feature/services/Orders/orders';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { ActivatedRoute } from '@angular/router';
 import { IOrderModel } from '../../models/order';
 
 @Component({
@@ -14,10 +13,6 @@ import { IOrderModel } from '../../models/order';
   styleUrl: './dashboard.css',
 })
 export class Dashboard {
-  private _activatedRoute = inject(ActivatedRoute);
-  // routerData = toSignal(this._activatedRoute.data);
-  // ordersData = computed(() => this.routerData()?.['data']);
-
   isLoading = signal<boolean>(true);
   _orderService = inject(Orders);
   timing = setInterval(() => {

@@ -1,0 +1,4 @@
+:host ::ng-deep .p-paginator-page .p-paginator-page-selected {
+    background-color: #9cbefa !important;
+    color: white !important;
+}
