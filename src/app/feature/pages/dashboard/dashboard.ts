@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
-import { SideBarComponent } from '../../../core/layout/side-bar/side-bar.component';
-import { NavBar } from '../../../core/layout/nav-bar/nav-bar';
-import { Analytics } from '../../../shared/bussiness/analytics/analytics';
 import { Table } from '../../../shared/UI/table/table';
+import { RouterLink } from '@angular/router';
+import { Analytics } from "../../../shared/bussiness/analytics/analytics";
 
 @Component({
   selector: 'app-dashboard',
-  imports: [SideBarComponent, NavBar , Analytics , Table],
+  imports: [Table, RouterLink, Analytics],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css',
 })

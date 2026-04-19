@@ -25,11 +25,13 @@ export class SideBarComponent implements OnInit {
 
       {
         label: 'Dashboard',
+        routerLink: '/',
         icon: 'pi pi-home',
       },
 
       {
         label: 'Orders',
+        routerLink: '/Orders',
         icon: 'pi pi-shopping-cart',
       },
       {

@@ -1,13 +1,15 @@
-<div class="bg-gray-100">
-  <div id="home" class="p-10 xl:flex gap-10 justify-center items-start">
-    <div class="w-full mb-5 xl:mb-0 xl:w-1/4">
-      <app-side-bar />
-    </div>
+<app-analytics />
 
-    <div class="w-full xl:w-3/4">
-      <app-nav-bar />
-      <app-analytics />
-      <app-table />
-    </div>
+<div class="flex justify-between items-center mb-5 px-1">
+  <p class="font-bold text-lg">Recent orders</p>
+  <div class="flex justify-between items-center text-gray-400 gap-1">
+    <a
+      [routerLink]="['/Orders']"
+      class="text-gray-400 hover:underline hover:font-bold duration-75 cursor-pointer"
+    >
+      Go to Orders Page
+    </a>
+    <div class="pi pi-arrow-right"></div>
   </div>
 </div>
+<app-table />
