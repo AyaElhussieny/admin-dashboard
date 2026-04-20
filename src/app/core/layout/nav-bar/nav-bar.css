@@ -1,0 +1,44 @@
+:host #user-menu :ng-deep .p-menu-list {
+  height: fit-content !important;
+}
+
+:host #user-menu ::ng-deep .p-menu {
+  width: fit-content !important;
+}
+:host #user-menu ::ng-deep.p-menu-item-link {
+  width: 100% !important;
+}
+
+:host ::ng-deep .p-button,
+:host ::ng-deep .p-button:hover,
+:host ::ng-deep .p-button:focus,
+:host ::ng-deep.p-button:not(:disabled):hover {
+  background-color: #0561fc;
+  color: white;
+  border-color: #0561fc;
+}
+
+@media screen and (max-width: 1000px) {
+  :host ::ng-deep .p-button,
+  :host ::ng-deep .p-button:hover,
+  :host ::ng-deep .p-button:focus,
+  :host ::ng-deep.p-button:not(:disabled):hover {
+    display: block;
+    justify-content: start;
+    background-color: #0561fc;
+    color: white;
+    border-color: #0561fc;
+  }
+
+  :host ::ng-deep .p-menu-item-link {
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
+    color: gray !important;
+  }
+  ::ng-deep .p-tieredmenu-root-list,
+  ::ng-deep.p-tieredmenu-submenu {
+    width: 100% !important;
+    max-width: 100vw !important ;
+    overflow-x: hidden !important;
+  }
+}

@@ -2,17 +2,16 @@
   display: none;
 }
 :host ::ng-deep .p-menu-item.p-focus .p-menu-item-content {
-    /* color: #0561fc !important; */
-    color: white !important;
-    background-color: #9cbefa;
-
+  /* color: #0561fc !important; */
+  color: white !important;
+  background-color: #9cbefa;
 }
-:host ::ng-deep .p-menu-item-link {
+:host #side-bar ::ng-deep .p-menu-item-link {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
   color: gray;
 }
-::ng-deep .p-menu-list {
+:host #side-bar ::ng-deep .p-menu-list {
   height: 100vh;
 }
 ::ng-deep a {
@@ -24,14 +23,13 @@
   :host ::ng-deep .p-button:hover,
   :host ::ng-deep .p-button:focus,
   :host ::ng-deep.p-button:not(:disabled):hover {
-    display: block;
     display: flex;
     justify-content: start;
     background-color: #0561fc;
     color: white;
     border-color: #0561fc;
   }
-  
+
   :host ::ng-deep .p-menu-item-link {
     margin-top: 0.5rem !important;
     margin-bottom: 0.5rem !important;
@@ -43,11 +41,11 @@
     max-width: 100vw !important ;
     overflow-x: hidden !important;
   }
-  ::ng-deep .p-button span {
+  :host #side-bar ::ng-deep .p-button span {
     text-align: start;
   }
 
-  ::ng-deep .p-menu {
+  :host #side-bar ::ng-deep .p-menu {
     display: none;
   }
 }
