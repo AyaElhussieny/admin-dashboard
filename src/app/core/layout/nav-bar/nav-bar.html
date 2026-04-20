@@ -30,7 +30,7 @@
       >
     } @else {
       <a
-        (click)="logout()"
+        [routerLink]="['/login']"
         class="text-blue-400 cursor-pointer hover:underline font-semibold hover:duration-75"
         >Login</a
       >

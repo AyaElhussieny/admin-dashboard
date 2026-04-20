@@ -8,7 +8,7 @@ import { ButtonModule } from 'primeng/button';
 import { MenuModule } from 'primeng/menu';
 import { MenuItem, MessageService } from 'primeng/api';
 import { StorageService } from '../../services/storage.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-nav-bar',
@@ -20,7 +20,8 @@ import { Router } from '@angular/router';
     OverlayBadgeModule,
     MenuModule,
     ButtonModule,
-  ],
+    RouterLink
+],
   templateUrl: './nav-bar.html',
   styleUrl: './nav-bar.css',
 })
