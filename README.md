@@ -1,59 +1,121 @@
-# AdminDashboard
+📊 Admin Dashboard
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.7.
+A modern Admin Dashboard built with Angular (or your stack—adjust if needed).
+This project provides a scalable structure for managing data, users, and analytics with a clean UI and modular architecture.
 
-## Development server
+🚀 Features
+Modular Angular architecture
+Reusable components
+Service-based API handling
+Responsive dashboard layout
+Charts & analytics (if included)
+Authentication-ready structure
+Clean and maintainable code
+⚙️ Setup Instructions
 
-To start a local development server, run:
+1. Clone the repository
+   git clone https://github.com/AyaElhussieny/admin-dashboard.git
+   cd admin-dashboard
+2. Install dependencies
 
-```bash
+Make sure you have Node.js installed.
+
+npm install --force 3. Run the project locally
 ng serve
-```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Then open:
 
-## Code scaffolding
+http://localhost:4200 
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
+4. Build for production
 ng build
-```
+🧱 Project Architecture
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+The project follows a modular Angular structure for scalability and maintainability.
 
-## Running unit tests
+## Project Structure (Modern Standalone Architecture)
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+src/
+│
+├── app/
+│ │
+│ ├── core/ # Core logic (singleton level)
+│ │ ├── services/ # Auth, API, global services
+│ │ ├── guards/ # Route guards
+│ │ ├── interceptors/ # HTTP interceptors
+│ │ ├── models/ # Interfaces / types
+│ │ └── providers.ts # Global providers (Angular 15+ style)
+│ │
+│ ├── shared/ # Reusable UI & utilities
+│ │ ├── components/ # Buttons, modals, tables
+│ │ ├── directives/
+│ │ ├── pipes/
+│ │ ├── utils/
+│ │ └── shared.ts # Standalone exports
+│ │
+│ ├── layout/ # App shell (UI structure)
+│ │ ├── sidebar/
+│ │ ├── navbar/
+│ │ ├── footer/
+│ │ └── layout.component.ts # Standalone component
+│ │
+│ ├── features/ # FEATURE-BASED STRUCTURE (important in v21)
+│ │ │
+│ │ ├── dashboard/
+│ │ │ ├── pages/
+│ │ │ ├── components/
+│ │ │ ├── services/
+│ │ │ └── dashboard.routes.ts
+│ │ │
+│ │ ├── users/
+│ │ │ ├── pages/
+│ │ │ ├── components/
+│ │ │ ├── services/
+│ │ │ └── users.routes.ts
+│ │ │
+│ │ ├── auth/
+│ │ │ ├── login/
+│ │ │ ├── register/
+│ │ │ ├── services/
+│ │ │ └── auth.routes.ts
+│ │ │
+│ │ └── settings/
+│ │ ├── pages/
+│ │ ├── components/
+│ │ └── settings.routes.ts
+│ │
+│ ├── app.routes.ts # Global routing (standalone routes)
+│ ├── app.config.ts # Global app configuration
+│ └── app.component.ts # Root standalone component
+│
+├── public/
+│ ├── images/
+│ ├── icons/
+│ ├── styles/
+│ └── fonts/
+│
+├── environments/
+│ ├── environment.ts
+│ └── environment.prod.ts
+│
+├── proxy file/
 
-```bash
-ng test
-```
+├── index.html
+├── main.ts
+└── styles.scss
 
-## Running end-to-end tests
 
-For end-to-end (e2e) testing, run:
+Angular (Standalone)
+RxJS
+Angular Router
+⚙️ Design Decisions
+✔ Feature-based structure → scalable
+✔ Standalone components → modern Angular
+✔ Separation of concerns → clean code
+📌 Notes
+Easy to extend with new features
+Ready to connect with backend APIs
+Suitable for admin panels & dashboards
+👩‍💻 Author
 
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Aya Elhussieny
