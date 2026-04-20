@@ -1,0 +1,23 @@
+<!-- invalid == false || loading == true  -->
+<button
+  class="btn rounded-lg text-{{ disabled() || loading() ? 'white' : btnTxColor() }} {{
+    width() ? 'w-full' : 'w-fit'
+  }} px-10 font-semibold me-3 py-1 border hover:cursor-pointer 
+  border-{{ disabled() || loading() ? '' : borderColor() }} bg-{{
+    disabled() || loading() ? 'gray-400' : btnColor()
+  }}"
+  [disabled]="disabled() || loading()"
+  (click)="sendAction()"
+>
+  @if (loading()) {
+    <p-progress-spinner
+      strokeWidth="6"
+      fill="transparent"
+      animationDuration="1s"
+      [style]="{ width: '25px', height: '25px' }"
+    />
+  }
+  @if (!loading()) {
+    {{ btnName() }}
+  }
+</button>

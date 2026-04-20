@@ -1,0 +1,76 @@
+<div id="auth" class="flex items-center mb-5 md:mb-0 bg-[#E5D9F2] flex-wrap lg:min-h-screen">
+  <div class="lg:w-1/2 w-full h-full bg-white lg:min-h-screen">
+    <!-- login -->
+    <div id="signup" class="py-20">
+      <div class="lg:px-20 px-10">
+        <a [routerLink]="['/']">
+          <img class="mb-5" src="Icons/Logo.png" alt="" />
+        </a>
+
+        <h1 class="text-4xl mb-2">Get Started Now</h1>
+        @if (errorMsg() != null) {
+          <p-message severity="error">{{ errorMsg() }}</p-message>
+        }
+        @if (successMsg() != null) {
+          <p-message severity="success">{{ successMsg() }}</p-message>
+        }
+
+        <form [formGroup]="loginForm" (ngSubmit)="login(loginForm)">
+          <!-- [invalid]="loginForm.get('email')?.getError('pattern') && loginForm.get('email')?.touched" -->
+          <app-input-shared
+            [dirty]="loginForm.get('email')?.dirty"
+            [invalid]="
+              loginForm.get('email')?.getError('pattern') ||
+              loginForm.get('email')?.touched ||
+              loginForm.get('email')?.getError('required')
+            "
+            formControlName="email"
+            [labelName]="'Email'"
+            [placeholder]="'Enter Your Email'"
+          />
+          @if (loginForm.get('email')?.getError('pattern')) {
+            <p class="text-red-400 font-normal ms-2 mt-2">Email invalid</p>
+          }
+          @if (loginForm.get('email')?.getError('required') && loginForm.get('email')?.touched) {
+            <p class="text-red-400 font-normal ms-2 mt-2">Email is required</p>
+          }
+          <app-password-shared
+            formControlName="password"
+            [labelName]="'Password'"
+            [placeholder]="'Enter Your Password'"
+          />
+          @if (loginForm.get('password')?.getError('required')) {
+            <p class="text-red-400 font-normal ms-2 mt-2">Password required</p>
+          }
+          <div class="flex mt-5 justify-start items-center">
+            <input
+              [checked]="rememberMeEnabled()"
+              (change)="remeberMeToggle()"
+              class="w-[1.2rem] h-[1.2rem] mx-1 border border-primary rounded-2xl"
+              type="checkbox"
+            />
+            <label for="">Remember me</label>
+          </div>
+          <div class="my-5 w-full">
+            <app-main-btn
+              [width]="true"
+              [loading]="isLoading()"
+              [disabled]="loginForm.invalid"
+              [btnColor]="'[#3c87e9]'"
+              [borderColor]="'white'"
+              [btnTxColor]="'white'"
+              [btnName]="'Login'"
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- /login -->
+  </div>
+  <div
+    class="lg:w-1/2 w-full flex justify-center items-center py-10 lg:py-0 bg-[#ddecff] lg:min-h-screen"
+  >
+    <img src="Images/login.png" alt="" />
+  </div>
+</div>

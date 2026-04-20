@@ -1,0 +1,5 @@
+<div id="input-shared" class="mt-5">
+    <label class=" mb-3 font-bold" for="">{{labelName()}}<span class="text-red-700">*</span></label>
+    <input pInputText type="text" [class.ng-invalid]="invalid()" [class.ng-dirty]="dirty()"
+    (input)="OnChange($any($event.target).value)" [placeholder]="placeholder()" />
+</div>
