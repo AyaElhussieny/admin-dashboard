@@ -6,14 +6,14 @@ import { provideClientHydration, withEventReplay } from '@angular/platform-brows
 import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeuix/themes/aura';
 import { MessageService } from 'primeng/api';
-import {  provideNoopAnimations } from '@angular/platform-browser/animations';
-import { provideHttpClient } from '@angular/common/http';
+import { provideNoopAnimations } from '@angular/platform-browser/animations';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     MessageService,
     provideNoopAnimations(),
-    provideHttpClient(),
+    provideHttpClient(withFetch()),
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes),
     provideClientHydration(withEventReplay()),
