@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, Component, inject, Injector, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  effect,
+  inject,
+  Injector,
+  signal,
+} from '@angular/core';
 import { MainBtnComponent } from '../../../shared/UI/main-btn/main-btn.component';
 import { InputSharedComponent } from '../../../shared/UI/input-shared/input-shared.component';
 import { PasswordSharedComponent } from '../../../shared/UI/password-shared/password-shared.component';
@@ -35,6 +42,7 @@ export class Login {
   private _loginService = inject(LoginService);
   private _router = inject(Router);
   private _storageService = inject(StorageService);
+  loginResponse = signal<IAuthRes | null>(null);
 
   loginForm: FormGroup = new FormGroup({
     email: new FormControl('', [
@@ -45,34 +53,44 @@ export class Login {
     password: new FormControl('', [Validators.required]),
   });
 
+  handleLoginEffect = effect(() => {
+    const res = this.loginResponse();
+
+    if (!res) return;
+
+    this.isLoading.set(false);
+
+    if ((res as any)?.status > 299) {
+      this.errorMsg.set((res as any)?.msg || 'Login failed');
+      this.successMsg.set(null);
+      return;
+    }
+
+    if (res.access_token) {
+      this.successMsg.set('Successfully Login User');
+      this.errorMsg.set(null);
+      this.setUserData(res);
+    }
+  });
+
   login(form: FormGroup) {
+    if (form.invalid) return;
+
     this.isLoading.set(true);
 
-    if (form.valid) {
-      // console.log(form.value);
-      const loginData = toSignal<IAuthRes | any>(this._loginService.login(form.value), {
-        injector: this.injector,
-      });
-      let timing = setInterval(() => {
-        if (loginData()?.status > 299) {
-          this.errorMsg.set(loginData()?.msg || null);
-          this.successMsg.set(null);
-          this.isLoading.set(false);
-          clearInterval(timing);
-          return;
+    const responseSignal = toSignal(this._loginService.login(form.value), {
+      injector: this.injector,
+    });
+
+    effect(
+      () => {
+        const data = responseSignal();
+        if (data) {
+          this.loginResponse.set(data);
         }
-        if (loginData()?.access_token) {
-          // console.log(loginData()?.msg);
-          // console.log(loginData());
-          this.successMsg.set('Successfully Login User');
-          this.errorMsg.set(null);
-          this.setUserData(loginData());
-          this.isLoading.set(false);
-          clearInterval(timing);
-          return;
-        }
-      }, 500);
-    }
+      },
+      { injector: this.injector },
+    );
   }
 
   setUserData(data: IAuthRes | undefined) {
