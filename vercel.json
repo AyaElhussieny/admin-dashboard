@@ -1,8 +1,8 @@
-{"installCommand": "npm install --legacy-peer-deps --no-audit --no-fund",
+{
+  "installCommand": "npm install --legacy-peer-deps --no-audit --no-fund",
   "buildCommand": "npm run build",
-  "outputDirectory": "dist/admin-dashboard",
-  "routes": [
-    { "handle": "filesystem" },
-    { "src": "/.*", "dest": "/index.html" }
+  "outputDirectory": "dist/admin-dashboard/browser",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
