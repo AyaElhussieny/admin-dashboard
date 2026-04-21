@@ -39,7 +39,7 @@
             [labelName]="'Password'"
             [placeholder]="'Enter Your Password'"
           />
-          @if (loginForm.get('password')?.getError('required')) {
+          @if (loginForm.get('password')?.getError('required') && loginForm.get('email')?.touched) {
             <p class="text-red-400 font-normal ms-2 mt-2">Password required</p>
           }
           <div class="flex mt-5 justify-start items-center">
