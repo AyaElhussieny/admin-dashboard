@@ -25,11 +25,17 @@ ng serve
 
 Then open:
 
-http://localhost:4200 
+http://localhost:4200
+
+using account login user
+{
+"email": "john@mail.com",
+"password": "changeme"
+}
 
 4. Build for production
-ng build
-🧱 Project Architecture
+   ng build
+   🧱 Project Architecture
 
 The project follows a modular Angular structure for scalability and maintainability.
 
@@ -103,7 +109,6 @@ src/
 ├── index.html
 ├── main.ts
 └── styles.scss
-
 
 Angular (Standalone)
 RxJS

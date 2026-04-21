@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { OrderEndPoints } from '../Enums/order.endpoints';
-import { map, Observable } from 'rxjs';
+import { catchError, map, Observable, of } from 'rxjs';
 import { OrderAdapter } from '../Adapters/order.adapter';
 import { IOrderModel } from '../../models/order';
 
@@ -15,6 +15,14 @@ export class Orders {
   getAllOrder(): Observable<IOrderModel[] | any> {
     return this._httpClient
       .get(OrderEndPoints.Orders)
-      .pipe(map((res: any) => this._orderAdapter.Adapt(res)));
+      .pipe(map((res: any) => this._orderAdapter.Adapt(res)))
+      .pipe(
+        catchError((error: HttpErrorResponse | any) => {
+          return of({
+            status: error.status,
+            msg: error.error.message,
+          });
+        }),
+      );
   }
 }

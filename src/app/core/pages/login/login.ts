@@ -62,8 +62,8 @@ export class Login {
           return;
         }
         if (loginData()?.access_token) {
-          console.log(loginData()?.msg);
-          console.log(loginData());
+          // console.log(loginData()?.msg);
+          // console.log(loginData());
           this.successMsg.set('Successfully Login User');
           this.errorMsg.set(null);
           this.setUserData(loginData());
