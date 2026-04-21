@@ -1,5 +1,12 @@
-:host ::ng-deep .p-paginator-page .p-paginator-page-selected ,
-:host ::ng-deep .p-paginator-page:focus{
-    background-color: #9cbefa !important;
-    color: white !important;
+:host ::ng-deep .p-paginator-page.p-paginator-page-selected,
+:host ::ng-deep .p-paginator-page:focus {
+  background-color: #9cbefa !important;
+  color: white !important;
+}
+
+@media screen and (max-width: 436px) {
+  :host ::ng-deep .p-paginator-next,
+  :host ::ng-deep .p-paginator-prev {
+    display: none !important;
+  }
 }
